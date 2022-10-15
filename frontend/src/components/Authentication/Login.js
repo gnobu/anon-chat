@@ -29,13 +29,13 @@ const Login = () => {
         try {
             const config = {
                 headers: {
-                    "Content-type": "application/json",
+                    // "Content-type": "application/json",
                 },
             };
 
             const { data } = await axios.post(
                 "/api/user/login",
-                { email, password },
+                { email: email, password: password },
                 config
             );
 

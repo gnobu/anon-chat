@@ -67,7 +67,7 @@ const SideDrawer = () => {
     try {
       const config = {
         headers: {
-          "Content-type": "application/json",
+          // "Content-type": "application/json",
           Authorization: `Bearer ${user.token}`,
         },
       };

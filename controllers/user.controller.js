@@ -63,9 +63,7 @@ class Auth {
 
     authUser = expressAsyncHandler(async (req, res) => {
         const { email, password } = req.body;
-        console.log(email, password);
 
-        // const user = await User.findOne({ email });
         const user = await this.persistenceService.authenticate(email, password);
 
         if (user) {

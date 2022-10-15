@@ -7,7 +7,7 @@ const { DBService } = require('../services/db.service');
 
 const auth = new Auth(new DBService());
 
-router.get('/get-signature', auth.sendSignature);
+// router.get('/get-signature', auth.sendSignature);
 router.post('/', validatePic, auth.registerUser);
 router.get('/', protect, auth.allUsers);
 router.post('/login', auth.authUser);

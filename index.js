@@ -15,10 +15,7 @@ app.get('/', (req, res) => {
     res.send('API is running');
 })
 
-app.use('/api/user', (req, res, next) => {
-    console.log('reached login');
-    next()
-}, userRoutes);
+app.use('/api/user', userRoutes);
 
 app.use('/api/chat', chatRoutes);
 
