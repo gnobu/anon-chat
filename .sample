@@ -1,0 +1,15 @@
+PORT = 5000
+
+DB_URI = mongodb+srv://<username>:<password>@cluster0.jfoz0ob.mongodb.net/talk-a-tive
+
+DB_PASSWORD = password12345
+
+DB_USERNAME = gnobu
+
+JWT_SECRET = talk-a-tive_secret
+
+NODE_ENV = development
+
+CLOUDNAME = gnobu
+CLOUDAPIKEY = 438127139132949
+CLOUDINARYSECRET = Vt0QV_yJZaYnMeznk3xISJJTwso

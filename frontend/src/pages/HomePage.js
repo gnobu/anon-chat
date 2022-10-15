@@ -23,9 +23,6 @@ const HomePage = () => {
         const user = JSON.parse(localStorage.getItem('userInfo'));
 
         if (user) {
-            // if (user.pic) {
-            //     user.pic = `https://res.cloudinary.com/gnobu/image/upload/v${user.pic.version}/${user.pic.p_id}.jpg`;
-            // }
             setUser(user);
             navigate('/chats');
         }
@@ -42,7 +39,7 @@ const HomePage = () => {
                 m="40px 0 15px 0"
                 borderRadius="lg"
                 borderWidth="1px">
-                <Text fontSize="4xl" fontFamily="Work sans" color={'black'}>Talk-A-Tive</Text>
+                <Text fontSize="4xl" fontFamily="Work sans" color={'black'}>anon-chat</Text>
             </Box>
             <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
                 <Tabs isFitted variant="soft-rounded">

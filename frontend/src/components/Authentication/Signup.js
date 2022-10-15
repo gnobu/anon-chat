@@ -13,85 +13,85 @@ const Signup = () => {
     const [email, setEmail] = useState();
     const [confirmpassword, setConfirmpassword] = useState();
     const [password, setPassword] = useState();
-    const [pic, setPic] = useState();
-    const [signatureRes, setSignatureRes] = useState();
+    // const [pic, setPic] = useState();
+    // const [signatureRes, setSignatureRes] = useState();
 
-    useEffect(() => {
-        const getSignature = async () => {
-            const signatureResponse = await axios.get("api/user/get-signature");
-            setSignatureRes(signatureResponse.data);
-        }
+    // useEffect(() => {
+    //     const getSignature = async () => {
+    //         const signatureResponse = await axios.get("api/user/get-signature");
+    //         setSignatureRes(signatureResponse.data);
+    //     }
 
-        // getSignature();
-        setTimeout(() => {
-            getSignature();
-        }, 5000);
-    }, []);
+    //     // getSignature();
+    //     setTimeout(() => {
+    //         getSignature();
+    //     }, 5000);
+    // }, []);
 
-    const postDetails = async (img) => {
-        setLoading(true);
-        if (img === undefined) {
-            toast({
-                title: 'NO IMAGE!',
-                description: "Please select an image.",
-                status: 'warning',
-                duration: 5000,
-                isClosable: true,
-            })
-        }
-        if (img?.type === 'image/jpeg' || img?.type === 'image/png') {
-            const data = new FormData();
-            console.log(data);
-            data.append("file", img);
-            data.append("api_key", signatureRes?.api_key)
-            data.append("signature", signatureRes?.signature);
-            data.append("timestamp", signatureRes?.timestamp);
+    // const postDetails = async (img) => {
+    //     setLoading(true);
+    //     if (img === undefined) {
+    //         toast({
+    //             title: 'NO IMAGE!',
+    //             description: "Please select an image.",
+    //             status: 'warning',
+    //             duration: 5000,
+    //             isClosable: true,
+    //         })
+    //     }
+    //     if (img?.type === 'image/jpeg' || img?.type === 'image/png') {
+    //         const data = new FormData();
+    //         console.log(data);
+    //         data.append("file", img);
+    //         data.append("api_key", signatureRes?.api_key)
+    //         data.append("signature", signatureRes?.signature);
+    //         data.append("timestamp", signatureRes?.timestamp);
 
-            console.log(data);
+    //         console.log(data);
 
-            try {
-                const cloudinaryResponse = await axios.post(`https://api.cloudinary.com/v1_1/${signatureRes?.cloud_name}/auto/upload`, data, {
-                    headers: { "Content-Type": "multipart/form-data" }
-                })
-                console.log(cloudinaryResponse.data);
-                setPic({
-                    public_id: cloudinaryResponse.data?.public_id,
-                    version: cloudinaryResponse.data?.version,
-                    signature: cloudinaryResponse.data?.signature,
-                });
-            } catch (error) {
-                console.log(error);
-                if(error.response.data.message.includes('Stale request')){
-                    toast({
-                        title: "Error Occured!",
-                        description: "Session timeout. Please refresh the page and try again",
-                        status: "error",
-                        duration: 5000,
-                        isClosable: true,
-                        position: "bottom",
-                    });
-                } else {
-                    toast({
-                        title: "Error Occured!",
-                        description: error.response.data.message,
-                        status: "error",
-                        duration: 5000,
-                        isClosable: true,
-                        position: "bottom",
-                    });
-                }
-            }
-        } else {
-            toast({
-                title: 'NO IMAGE!',
-                description: "Please select an image.",
-                status: 'warning',
-                duration: 5000,
-                isClosable: true,
-            })
-        }
-        setLoading(false);
-    }
+    //         try {
+    //             const cloudinaryResponse = await axios.post(`https://api.cloudinary.com/v1_1/${signatureRes?.cloud_name}/auto/upload`, data, {
+    //                 headers: { "Content-Type": "multipart/form-data" }
+    //             })
+    //             console.log(cloudinaryResponse.data);
+    //             setPic({
+    //                 public_id: cloudinaryResponse.data?.public_id,
+    //                 version: cloudinaryResponse.data?.version,
+    //                 signature: cloudinaryResponse.data?.signature,
+    //             });
+    //         } catch (error) {
+    //             console.log(error);
+    //             if(error.response.data.message.includes('Stale request')){
+    //                 toast({
+    //                     title: "Error Occured!",
+    //                     description: "Session timeout. Please refresh the page and try again",
+    //                     status: "error",
+    //                     duration: 5000,
+    //                     isClosable: true,
+    //                     position: "bottom",
+    //                 });
+    //             } else {
+    //                 toast({
+    //                     title: "Error Occured!",
+    //                     description: error.response.data.message,
+    //                     status: "error",
+    //                     duration: 5000,
+    //                     isClosable: true,
+    //                     position: "bottom",
+    //                 });
+    //             }
+    //         }
+    //     } else {
+    //         toast({
+    //             title: 'NO IMAGE!',
+    //             description: "Please select an image.",
+    //             status: 'warning',
+    //             duration: 5000,
+    //             isClosable: true,
+    //         })
+    //     }
+    //     setLoading(false);
+    // }
 
     const submitHandler = async () => {
         setLoading(true);
@@ -124,7 +124,7 @@ const Signup = () => {
                     name,
                     email,
                     password,
-                    pic,
+                    // pic,
                 }
             );
             console.log(data);
@@ -200,7 +200,7 @@ const Signup = () => {
                 </InputGroup>
             </FormControl>
 
-            <FormControl id="pic">
+            {/* <FormControl id="pic">
                 <FormLabel>Upload your Picture</FormLabel>
                 <Input
                     type="file"
@@ -208,7 +208,7 @@ const Signup = () => {
                     accept="image/*"
                     onChange={(e) => postDetails(e.target.files[0])}
                 />
-            </FormControl>
+            </FormControl> */}
 
             <Button
                 colorScheme="blue"
